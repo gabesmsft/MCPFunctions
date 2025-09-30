@@ -71,6 +71,8 @@ If the connection is successful, the output should show entries that resemble th
 1. In Visual Studio Code, select **View | Chat**.
 2. Verify that **Agent** is selected in the Chat pane.
 3. Ask the chat a question such as **What's a good food that is savory?**. It should find the Function App's food_recommendation tool and respond with the tool's response of "grits with butter" for savory, along with some additional information about grits with butter that the VS Code chat retrieves from its langauge model.
+
    Note: If prompted to Approve, select Approve or click the drop-down and select the option to auto-approve.
-4. Ask the chat a question such as **What's a good food that is bitter?**. It should respond with the food_recommendation's default response of "corn fritters" when a taste isn't provided or matched.
+   
+4. Ask the chat a question such as **What's a good food that is bitter?**. It should respond with the food_recommendation's default response of "corn fritters", because bitter isn't a condition in the MCP function. Based on the language model that the agent uses, the agent will comment that this isn't typically considered a bitter food.
 5. Ask other questions that relate to the food_recommendation or drink_recommendation tool.
