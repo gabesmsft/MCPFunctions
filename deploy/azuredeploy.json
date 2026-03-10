@@ -9,6 +9,12 @@
         "description": "The name of the Azure Function app."
       }
     },
+,
+    "tagValues": {
+      "type": "object",
+      "defaultValue": {
+        "Key1": "Value1"
+      }
     "functionAppRuntime": {
       "type": "string",
       "allowedValues": [
@@ -57,6 +63,7 @@
     "storageAccountType": {
       "type": "string",
       "defaultValue": "Standard_LRS",
+      "tags": "[parameters('tagValues')]",
       "allowedValues": [
         "Standard_LRS",
         "Standard_GRS",
