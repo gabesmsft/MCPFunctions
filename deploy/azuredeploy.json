@@ -9,12 +9,12 @@
         "description": "The name of the Azure Function app."
       }
     },
-,
     "tagValues": {
       "type": "object",
       "defaultValue": {
         "Key1": "Value1"
       }
+    },
     "functionAppRuntime": {
       "type": "string",
       "allowedValues": [
