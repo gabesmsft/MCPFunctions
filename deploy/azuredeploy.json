@@ -98,7 +98,10 @@
       "sku": {
         "name": "[parameters('storageAccountType')]"
       },
-      "kind": "Storage"
+      "kind": "Storage",
+      "properties": {
+        "allowSharedKeyAccess": true
+      }
     },
     {
       "type": "Microsoft.Web/serverfarms",
