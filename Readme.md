@@ -13,7 +13,7 @@ This Function App also includes an [MCP resource trigger](https://learn.microsof
 
 ## Deploy the ARM template
 
-[![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fgabesmsft%2FFunctionAppHttpResponseTest%2Fmaster%2Fdeploy%2Fazuredeploy.json)
+[![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fgabesmsft%2FMCPFunctions%2Fmaster%2Fdeploy%2Fazuredeploy.json)
 
 This template deploys a Function App in Flex Consumption plan, and its resource dependencies, including a storage account and App Insights instance.
 
