@@ -39,7 +39,7 @@ az functionapp deployment source config-zip --src app.zip -n YourFunctionAppName
 ## Get the MCP endpoint and key
 
  1. In the Azure portal, get the Function App URL, and then construct the MCP server URL as https://YourFunctionAppHostNamePrefix.azurewebsites.net/runtime/webhooks/mcp , where YourFunctionAppHostNamePrefix is your hostname prefix.  You will use this URL in a later step.
- 2. On the Function App, get the mcp_extension key. This can currently be found on the Functions blade. You will use this key to connect to the MCP server in a later step.
+ 2. On the Function App, get the mcp_extension key. This can currently be found on the App keys blade, which is grouped under Functions in the blade area. You will use this key to connect to the MCP server in a later step.
 
 
 ## Configure the client connection
@@ -48,18 +48,36 @@ Here are a couple examples for configuring a connection to the MCP server on a c
 
 ###  Azure SRE Agent
 
+If you want to test Azure SRE Agent functionality with the MCP server, you can refer to these steps.
+
 #### Configure the connection
 
-Add an **MCP server** connector with the following settings (replace *italicized* values:
+In Azure SRE Agent, add an **MCP server** connector with the following settings (replace *italicized* values):
 
 - Connection type: Streamable-HTTP
 - URL: https://*YourFunctionAppHostNamePrefix*.azurewebsites.net/runtime/webhooks/mcp
 - Authentication method: Custom headers
   - key: x-functions-key
   - value: *your mcp_extension key*
-- Tools: *after successfully testing the connection, select all available tools*
+- Tools: Select all (should consist of **FunctionsMCP_drink_recommendation** and **FunctionsMCP_food_recommendation**
+  
+  > Note: The tools selection is only available after you successfully test the connection.
 
- ### Visual Studio Code
+Verify that the connector status shows as Connected after you add it. It might take a couple minutes, and you might need to refresh the page to upate the status.
+
+#### Test the MCP tools
+
+In Azure SRE Agent, open a new chat thread, and ask the agent questions such as the following:
+- What's a good food that is savory?
+- What's a good food that is bitter?
+- What's a good drink that is fizzy?
+
+The SRE Agent should route these questions to the food or drink recommendation tools on the Function App MCP server, via the SRE agent connector, and should return answers from the Function App MCP server. The questions don't need to be phrased exactly as above, since the AI in SRE Agent will determine the context of the questions and will route them accordingly.
+
+
+### Visual Studio Code
+
+If you want to test the Functions MCP extension in general, or Visual Studio Code interactivitity with the MCP server, you can refer to these steps.
 
  #### Configure the connection
 
@@ -117,10 +135,12 @@ If the connection is successful, the output should show entries that resemble th
 #### Test the MCP tools
 1. In Visual Studio Code, select **View | Chat**.
 2. Verify that **Agent** is selected in the Chat pane.
-3. Ask the chat a question such as **What's a good food that is savory?**. It should find the Function App's food_recommendation tool and respond with the tool's response of "grits with butter" for savory, along with some additional information about grits with butter that the VS Code chat retrieves from its langauge model.
-   Note: If prompted to Approve, select Approve or click the drop-down and select the option to auto-approve.
-4. Ask the chat a question such as **What's a good food that is bitter?**. It should respond with the food_recommendation's default response of "corn fritters" when a taste isn't provided or matched.
-5. Ask other questions that relate to the food_recommendation or drink_recommendation tool.
+3. Ask the chat some questions such as the following:
+- What's a good food that is savory?
+- What's a good food that is bitter?
+- What's a good drink that is fizzy?
+
+The chat agent should route these questions to the food or drink recommendation tools on the Function App MCP server, and should return answers from the Function App MCP server. The questions don't need to be phrased exactly as above, since the AI in the chat agent will determine the context of the questions and will route them accordingly.
 
 If asking about a drink recommendation, the resource trigger should return a static list of drink recipes, starting with a header of "Drink recommendations webpage", which is the rendered index.html page specified by the resource trigger. Additionally, the resource trigger should trigger the mcp tool trigger, which returns its drink recommendation. 
 
