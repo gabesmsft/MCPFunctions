@@ -38,7 +38,7 @@ az functionapp deployment source config-zip --src app.zip -n YourFunctionAppName
 
 ## Get the MCP endpoint and key
 
- 1. In the Azure portal, get the Function App host name, and then construct the MCP server URL as https://YourFunctionAppHostNamePrefix.azurewebsites.net/runtime/webhooks/mcp , where YourFunctionAppHostNamePrefix is your hostname prefix.  You will use this URL in a later step.
+ 1. In the Azure portal, get the Function App URL, and then construct the MCP server URL as https://YourFunctionAppHostNamePrefix.azurewebsites.net/runtime/webhooks/mcp , where YourFunctionAppHostNamePrefix is your hostname prefix.  You will use this URL in a later step.
  2. On the Function App, get the mcp_extension key. This can currently be found on the Functions blade. You will use this key to connect to the MCP server in a later step.
 
 
