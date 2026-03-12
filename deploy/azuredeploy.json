@@ -48,6 +48,7 @@
         "name": "Standard_LRS"
       },
       "kind": "Storage",
+      "tags": "[parameters('tagValues')]",
       "properties": {
         "allowSharedKeyAccess": true
       }
